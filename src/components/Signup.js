@@ -31,12 +31,14 @@ var Signup = React.createClass({
 				localStorage.setItem('users', JSON.stringify(JSON.parse(localStorage.getItem('users')).concat(users)));
 				sessionStorage.setItem('user', JSON.stringify(signupData));
 				this.props.onFormSubmit(true);
+				this.props.renderHome(true);
 			}
 		} else {
 				users.push(signupData);
 				localStorage.setItem('users', JSON.stringify(users));
 				sessionStorage.setItem('user', JSON.stringify(signupData));
 				this.props.onFormSubmit(true);
+				this.props.renderHome(true);
 			}
 	},
 

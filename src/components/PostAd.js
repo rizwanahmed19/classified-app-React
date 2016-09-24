@@ -11,16 +11,17 @@ var PostAd = React.createClass({
 		var name = document.getElementById('name').value;
 		var number = document.getElementById('number').value;
 		var city = document.getElementById('city').value;
-		// var encodedPhoto = this.getBase64Image(photo);
+
 		var adData = {
 			title: title,
 			category: category,
 			description: description,
-			photo: encodedPhoto,
+			photo: photo,
 			name: name,
 			number: number,
 			city: city,
 		};
+
 		var users = JSON.parse(localStorage.getItem('users'));
 		users.forEach(function(user){
 			if (user.email === JSON.parse(sessionStorage.getItem('user')).email) {
@@ -28,21 +29,9 @@ var PostAd = React.createClass({
 
 			}
 		});
+		localStorage.clear();
 		localStorage.setItem('users', JSON.stringify(users));
 		// window.location.replace('/#/myAccount', '');
-	},
-	getBase64Image: function(img) {
-    var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-
-    var ctx = canvas.getContext("2d");
-    var img = new Image();
-    ctx.drawImage(img, 0, 0);
-
-    var dataURL = canvas.toDataURL("image/png");
-
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
 	},
 	render: function(){
 		return (

@@ -16,6 +16,7 @@ var Login = React.createClass({
 							data['password'] = password;
 							data['firstName'] = user.firstName;
 							data['lastName'] = user.lastName;
+							data['ads'] = user.ads;
 							sessionStorage.setItem('user', JSON.stringify(data));
 							this.props.onFormSubmit(true);
 						} else {

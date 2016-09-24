@@ -9,7 +9,6 @@ var Nav = React.createClass({
 	},
 	scrollDown: function(){
 		window.scrollTo(0, document.body.scrollHeight);
-		console.log(this.props);
 	},
 	logOut: function(){
 		sessionStorage.clear();

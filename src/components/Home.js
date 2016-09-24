@@ -8,18 +8,14 @@ import Categories from './Categories';
 
 var Home = React.createClass({
 	getInitialState: function(){
-		console.log(this.props)
 		return {
-			loggedIn: this.props.route.newState //sessionStorage.getItem('user') ? true : false
+			loggedIn: sessionStorage.getItem('user') ? true : false
 		}
 	},
-	// handleState: function(val){
-	// 	this.setState({
-	// 		loggedIn: val
-	// 	});
-	// },
-	componentDidMount: function(){
-		
+	thisHomeState: function(val){
+		this.setState({
+			loggedIn: val
+		});
 	},
 	render: function(){
 		return (
@@ -46,10 +42,10 @@ var Home = React.createClass({
 						</div> :
 						<div className='container-fluid text-center signup-login' id='signup-login'>
 							<div className='col-sm-4 login-col'>
-								<Login onFormSubmit={this.props.route.homeState}/>
+								<Login renderHome={this.thisHomeState} onFormSubmit={this.props.route.homeState}/>
 							</div>
 							<div className='col-sm-8 signup-col'>
-								<Signup onFormSubmit={this.props.route.homeState}/>
+								<Signup renderHome={this.thisHomeState} onFormSubmit={this.props.route.homeState}/>
 							</div>
 						</div>
 				}
