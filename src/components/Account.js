@@ -3,6 +3,7 @@ import {Link} from 'react-router';
 var Account = React.createClass({
 	render: function(){
 		{var users = JSON.parse(localStorage.getItem('users'))}
+		{var user = JSON.parse(sessionStorage.getItem('user'))}
 		return (
 			<div className='accountPage'>
 					<div className='row'>
@@ -12,17 +13,17 @@ var Account = React.createClass({
 
 							<div className='col-sm-6'>
 								<p><span>Name: </span> 
-										{JSON.parse(sessionStorage.getItem('user')).firstName + JSON.parse(sessionStorage.getItem('user')).lastName}
+										{user.firstName + user.lastName}
 								</p>
 
 								<p><span>Email: </span> 
-										{JSON.parse(sessionStorage.getItem('user')).email}
+										{user.email}
 								</p>
 							</div>
 
 							<div className='col-sm-6'>
 								<p><span id='total-ads'>Total Ads: </span> 
-										{JSON.parse(sessionStorage.getItem('user')).ads.length}
+										{user.ads.length}
 								</p>
 
 								<Link to='/postAd' className='btn btn-warning btn-md headline-btn' >Submit an ad</Link>
@@ -35,7 +36,11 @@ var Account = React.createClass({
 							<h1 className='text-center'>My Ads</h1>
 							<hr width='25%' />
 							<div className='adsList'>
-
+								{
+									user.ads.length === 0 ?
+										<p className='ad-prompt text-center'>There are currently no ads to display</p> :
+										''
+								}
 							</div>
 						</div>
 
